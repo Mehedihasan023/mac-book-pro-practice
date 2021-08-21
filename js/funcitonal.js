@@ -37,10 +37,10 @@ function substraction(price) {
 // Handling Event for memory
 document.getElementById('memory-8Gb').addEventListener
     ('click', function () {
-        let previous16gbMemory = document.getElementById('memory-Cost');
-        let previous16gbMemoryText = previous16gbMemory.innerText;
-        let previous16gbMemoryCost = parseFloat(previous16gbMemoryText);
-        if (previous16gbMemoryCost == 180) {
+        let previous8gbMemory = document.getElementById('memory-Cost');
+        let previous8gbMemoryText = previous8gbMemory.innerText;
+        let previous8gbMemoryCost = parseFloat(previous8gbMemoryText);
+        if (previous8gbMemoryCost == 180) {
             choosingOption(0, 'memory-Cost');
             substraction(180);
         }
