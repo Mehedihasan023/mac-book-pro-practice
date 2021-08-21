@@ -37,12 +37,16 @@ function substraction(price) {
 // Handling Event for memory
 document.getElementById('memory-8Gb').addEventListener
     ('click', function () {
-        choosingOption(0, 'memory-Cost');
-        substraction(180);
+        let previous16gbMemory = document.getElementById('memory-Cost');
+        let previous16gbMemoryText = previous16gbMemory.innerText;
+        let previous16gbMemoryCost = parseFloat(previous16gbMemoryText);
+        if (previous16gbMemoryCost == 180) {
+            choosingOption(0, 'memory-Cost');
+            substraction(180);
+        }
     })
 document.getElementById('memory-16Gb').addEventListener
     ('click', function () {
-        //   choosingOption(180,'memory-Cost');
         let previous16gbMemory = document.getElementById('memory-Cost');
         let previous16gbMemoryText = previous16gbMemory.innerText;
         let previous16gbMemoryCost = parseFloat(previous16gbMemoryText);
@@ -98,8 +102,13 @@ document.getElementById('ssd-1tb').addEventListener
 // Handling Event for delivery
 document.getElementById('free-delivery').addEventListener
     ('click', function () {
+        let previousDelivery = document.getElementById('delivery-cost');
+        let previousDeliveryText = previousDelivery.innerText;
+        let previousDeliveryCost = parseFloat(previousDeliveryText);
+        if (previousDeliveryCost == 20) {
+            substraction(20);   
+        }
         choosingOption(0, 'delivery-cost');
-        substraction(20);
     })
 document.getElementById('delivery-charge').addEventListener
     ('click', function () {
