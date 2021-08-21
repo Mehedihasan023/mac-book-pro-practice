@@ -1,130 +1,133 @@
-function ChoosingOption(price,choose){
-    const total1 = document.getElementById('total-price');
-    const previousTotal = total1.innerText;
-    const previousnumber= parseFloat(previousTotal);
+// function for calculating total cost
+function choosingOption(price, choose) {
+    const previousTotal = document.getElementById('total-price');
+    const previousTotalText = previousTotal.innerText;
+    const previousTotalValue = parseFloat(previousTotalText);
     const chooseOption = document.getElementById(choose);
     const previousprice = parseFloat(price);
-    if(previousprice == 180 || previousprice == 80){    
-    chooseOption.innerText= 180;
+    if (previousprice == 180 || previousprice == 80) {
+        chooseOption.innerText = 180;
     }
-    else if(previousprice == -80){
-        chooseOption.innerText= 100;
+    else if (previousprice == -80) {
+        chooseOption.innerText = 100;
     }
-    else{
-        chooseOption.innerText= price;
+    else {
+        chooseOption.innerText = price;
     }
-    let newTotal= price;
-    let newnumber = parseFloat(newTotal);
-    total1.innerText = previousnumber + newnumber;
-    const finalTotal = document.getElementById('finalTotal');
-    finalTotal.innerText = previousnumber + newnumber; 
+    let newTotal = price;
+    let newTotalValue = parseFloat(newTotal);
+    previousTotal.innerText = previousTotalValue + newTotalValue;
+    let finalTotal = document.getElementById('finalTotal');
+    finalTotal.innerText = previousTotalValue + newTotalValue;
 
 }
-function substraction(price){
-    
-        const total3 = document.getElementById('total-price');
-        const total3sub= total3.innerText;
-        const previoustotal3 = parseFloat(total3sub);
-        if(previoustotal3 > 1299){
+// function for substraction of cost
+function substraction(price) {
+
+    const previousCost = document.getElementById('total-price');
+    const previousCostText = previousCost.innerText;
+    const previousCostValue = parseFloat(previousCostText);
+    if (previousCostValue > 1299) {
         const totalnumber = parseFloat(price);
-      const newSubstraction = previoustotal3 - totalnumber;
-      total3.innerText = newSubstraction;
+        const newSubstraction = previousCostValue - totalnumber;
+        previousCost.innerText = newSubstraction;
+        finalTotal.innerText = newSubstraction;
     }
 }
-// for memory
+// Handling Event for memory
 document.getElementById('memory-8Gb').addEventListener
-('click', function(){
-    ChoosingOption( 0 ,'memory-Cost');
-    substraction(180);
-})
-document.getElementById('memory-16Gb').addEventListener
-('click', function(){
-//   ChoosingOption(180,'memory-Cost');
-    let previousMemory = document.getElementById('memory-Cost');
-    let previousMemoryText = previousMemory.innerText;
-    let previousMemoryInt = parseFloat(previousMemoryText);
-    if(previousMemoryInt == 0){
-        ChoosingOption(180,'memory-Cost');
-    }
-})
-// for storage
-document.getElementById('ssd-256gb').addEventListener
-('click',function(){
-    // ChoosingOption(0,'storage-cost');
-    let previousStorageText = document.getElementById('storage-cost');
-    let previousCost = previousStorageText.innerText;
-    let previousCostInt = parseFloat(previousCost);
-    if(previousCostInt == 100){
-        substraction(100);
-        ChoosingOption(0,'storage-cost');
-    }
-    else if (previousCostInt == 180){
+    ('click', function () {
+        choosingOption(0, 'memory-Cost');
         substraction(180);
-    }
-    else if(previousCostInt == 0){
-        substraction(0);
-    }
-    ChoosingOption(0,'storage-cost');
-})
+    })
+document.getElementById('memory-16Gb').addEventListener
+    ('click', function () {
+        //   choosingOption(180,'memory-Cost');
+        let previous16gbMemory = document.getElementById('memory-Cost');
+        let previous16gbMemoryText = previous16gbMemory.innerText;
+        let previous16gbMemoryCost = parseFloat(previous16gbMemoryText);
+        if (previous16gbMemoryCost == 0) {
+            choosingOption(180, 'memory-Cost');
+        }
+    })
+// handling Event for storage
+document.getElementById('ssd-256gb').addEventListener
+    ('click', function () {
+        let previous256Storage = document.getElementById('storage-cost');
+        let previous256StorageText = previous256Storage.innerText;
+        let previous256StorageValue = parseFloat(previous256StorageText);
+        if (previous256StorageValue == 100) {
+            substraction(100);
+            choosingOption(0, 'storage-cost');
+        }
+        else if (previous256StorageValue == 180) {
+            substraction(180);
+        }
+        else if (previous256StorageValue == 0) {
+            substraction(0);
+        }
+        choosingOption(0, 'storage-cost');
+    })
 document.getElementById('ssd-512gb').addEventListener
-('click',function(){
+    ('click', function () {
 
-    
-    let previousStorageText = document.getElementById('storage-cost');
-    let previousCost = previousStorageText.innerText;
-    let previousCostInt = parseFloat(previousCost);
-    if(previousCostInt == 0){
-        ChoosingOption(100,'storage-cost');
-    }
-    else if(previousCostInt == 180){
-        ChoosingOption(-80,'storage-cost');
-    }
 
-})
+        let previous512Storage = document.getElementById('storage-cost');
+        let previous512StorageText = previous512Storage.innerText;
+        let previous512StorageValue = parseFloat(previous512StorageText);
+        if (previous512StorageValue == 0) {
+            choosingOption(100, 'storage-cost');
+        }
+        else if (previous512StorageValue == 180) {
+            choosingOption(-80, 'storage-cost');
+        }
+
+    })
 document.getElementById('ssd-1tb').addEventListener
-('click',function(){
-    let previousStorageText = document.getElementById('storage-cost');
-    let previousCost = previousStorageText.innerText;
-    let previousCostInt = parseFloat(previousCost);
-    if(previousCostInt == 100){
-        ChoosingOption(80,'storage-cost');
-    }
-    else if(previousCostInt == 0){
-        ChoosingOption(180,'storage-cost');
-    }
-})
-// for delivery 
+    ('click', function () {
+        let previous1tbStorage = document.getElementById('storage-cost');
+        let previous1tbStorageText = previous1tbStorage.innerText;
+        let previous1tbStorageValue = parseFloat(previous1tbStorageText);
+        if (previous1tbStorageValue == 100) {
+            choosingOption(80, 'storage-cost');
+        }
+        else if (previous1tbStorageValue == 0) {
+            choosingOption(180, 'storage-cost');
+        }
+    })
+// Handling Event for delivery
 document.getElementById('free-delivery').addEventListener
-('click',function(){
-    ChoosingOption(0,'delivery-cost');
-    substraction(20);
-})
+    ('click', function () {
+        choosingOption(0, 'delivery-cost');
+        substraction(20);
+    })
 document.getElementById('delivery-charge').addEventListener
-('click',function(){
-    // ChoosingOption(20,'delivery-cost');
-    let previousDelivery = document.getElementById('delivery-cost');
-    let previousDeliveryText = previousDelivery.innerText;
-    let previousDeliveryInt = parseFloat(previousDeliveryText);
-    if(previousDeliveryInt == 0){
-        ChoosingOption(20,'delivery-cost');
-    }
-});
+    ('click', function () {
+        let previousDelivery = document.getElementById('delivery-cost');
+        let previousDeliveryText = previousDelivery.innerText;
+        let previousDeliveryCost = parseFloat(previousDeliveryText);
+        if (previousDeliveryCost == 0) {
+            choosingOption(20, 'delivery-cost');
+        }
+    });
+//  for checking discount 
 
 document.getElementById('aply-btn').addEventListener
-('click',function(){
-   
-    const inputText = document.getElementById('inputText');
-    const inputPomoCode = inputText.value;
-    const totalText = document.getElementById('finalTotal');
-    const totalValueText = totalText.innerText;
-    const totalValueInt = parseFloat(totalValueText);
-    if(totalValueInt % 1 != 0){
-        inputText.value = 'Already used';
-    }
-    else if ( inputPomoCode == 'seteveKaku' && totalValueInt > 1299){
-       const discount = totalValueInt - (totalValueInt * 0.20);
-       totalText.innerText= discount;
-       inputText.value = '';
-    }
-  
-})
+    ('click', function () {
+        const inputText = document.getElementById('inputText');
+        const inputPomoCode = inputText.value;
+        const totalText = document.getElementById('finalTotal');
+        const totalValueText = totalText.innerText;
+        const totalValueCost = parseFloat(totalValueText);
+
+        // checking if code is used again
+        if (totalValueCost % 1 != 0) {
+            inputText.value = 'Already used';
+        }
+        //  matching pomo code
+        else if (inputPomoCode == 'stevekaku') {
+            const discount = totalValueCost - (totalValueCost * 0.20);
+            totalText.innerText = discount;
+            inputText.value = '';
+        }
+    })
